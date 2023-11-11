@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="1%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C">1.如何运行</h1>
+<p>1.在本地启动ganache应用
+2.在 ./contracts 中安装依赖，运行如下命令：</p>
+<pre class="hljs"><code><div>npm install
+</div></code></pre>
+<p>3.在ganache中复制自己的账户地址，在./contracts/contracts/BorrowYourCar.sol中的createCars函数中和，粘贴自己的账户地址
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699671242887-eda83e09-1923-422e-b659-7fefe3623698.png#averageHue=#dfdbd8&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=713&amp;id=KldAz&amp;originHeight=891&amp;originWidth=1469&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=201511&amp;status=done&amp;style=none&amp;taskId=uc8bc2df9-334c-402c-bda5-1c57aa976e8&amp;title=&amp;width=1175.2" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699671230693-1e0290ae-eb62-4235-83ff-5f70a1f8ec80.png#averageHue=#302e2d&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=324&amp;id=i4dih&amp;originHeight=405&amp;originWidth=896&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=99266&amp;status=done&amp;style=none&amp;taskId=uca68f473-b675-4183-897a-9391fd31cac&amp;title=&amp;width=716.8" alt="image.png">
+4.在ganache中复制账户密钥，粘贴到.\contracts\hardhat.config.ts中：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699671368738-7544c8be-a132-4351-99fe-e86f645ff6b4.png#averageHue=#2c2b2b&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=326&amp;id=u9e60da10&amp;originHeight=407&amp;originWidth=1059&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=70854&amp;status=done&amp;style=none&amp;taskId=ufadb1ed3-122f-4bdc-947c-145b8ffee87&amp;title=&amp;width=847.2" alt="image.png">
+5.在 ./contracts 中编译合约，运行如下命令：</p>
+<pre class="hljs"><code><div>npx hardhat run ./scripts/deploy.ts --network ganache
+</div></code></pre>
+<p>6.复制打印出来的合约地址到 ./fronted/src/utils/contract-addresses.json 中
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699667593933-b197768e-3a55-4a31-b824-8929ecd74a61.png#averageHue=#262322&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=110&amp;id=u0e220f63&amp;originHeight=137&amp;originWidth=724&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=13465&amp;status=done&amp;style=none&amp;taskId=u07edcce3-0b47-4f96-b8c6-a29a373d9e0&amp;title=&amp;width=579.2" alt="image.png">
+7.在 ./fronted 中安装依赖，运行如下命令：</p>
+<pre class="hljs"><code><div>npm install
+</div></code></pre>
+<p>8.在 ./ fronted 中启动前端程序，运行如下命令：</p>
+<pre class="hljs"><code><div>npm run dev
+</div></code></pre>
+<h1 id="2%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E5%88%86%E6%9E%90">2.功能实现分析</h1>
+<h2 id="21%E6%9F%A5%E7%9C%8B%E8%87%AA%E5%B7%B1%E6%8B%A5%E6%9C%89%E7%9A%84%E6%B1%BD%E8%BD%A6%E5%88%97%E8%A1%A8">2.1查看自己拥有的汽车列表</h2>
+<p>在合约中实现了getOwnedCar函数：</p>
+<pre class="hljs"><code><div>function getOwnedCars(address owner) external view returns (uint256[] memory) {
+        // Get the list of car token IDs owned by a specific user
+        uint256 counter = 0;
+        for (uint256 i = 0; i &lt; totalCars; i++) {
+            if (ownerOf(i) == owner) {
+
+                counter++;
+            }
+        }
+        uint256[] memory ownedCars=new uint256[](counter) ;
+        counter=0;
+        for (uint256 i = 0; i &lt; totalCars; i++) {
+            if (ownerOf(i) == owner) {
+                ownedCars[counter] = i;
+                counter++;
+            }
+        }
+        return ownedCars;
+    }
+</div></code></pre>
+<p>在前端中通过按钮触发并且调用它，渲染数据到listOfResult中：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699668105093-9d55e4cf-62e1-48b9-99f3-5b61be819aee.png#averageHue=#f9f9f9&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=467&amp;id=ufdd4da01&amp;originHeight=584&amp;originWidth=1752&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=90856&amp;status=done&amp;style=none&amp;taskId=u4d2c5761-35c5-4024-87b3-17f3f0245ee&amp;title=&amp;width=1401.6" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699668030643-2502efa6-624f-4d7c-866f-5c4d6a3e06c6.png#averageHue=#1f1f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=349&amp;id=ue256db2d&amp;originHeight=436&amp;originWidth=1176&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=55163&amp;status=done&amp;style=none&amp;taskId=u73bf774a-fc95-4741-802d-f8645ca64d0&amp;title=&amp;width=940.8" alt="image.png"></p>
+<h2 id="22%E6%9F%A5%E7%9C%8B%E8%87%AA%E5%B7%B1%E5%B7%B2%E7%BB%8F%E5%80%9F%E7%94%A8%E7%9A%84%E8%BD%A6%E8%BE%86">2.2查看自己已经借用的车辆</h2>
+<p>在合约中实现了getMyBorrowedCars函数：</p>
+<pre class="hljs"><code><div>function getMyBorrowedCars(address borrower1) external view returns (uint256[] memory) {
+
+            uint256 count = 0;
+
+            for (uint256 i = 0; i &lt; totalCars; i++) {
+                 if (cars[i].borrower == borrower1&amp;&amp;cars[i].isBorrowed) {
+                 count++;
+            }}
+             uint256[] memory MyBorrowedCars = new uint256[](count);
+             count =0;
+             for (uint256 i = 0; i &lt; totalCars; i++) {
+                  if (cars[i].borrower == borrower1 &amp;&amp; cars[i].isBorrowed) {
+                  MyBorrowedCars[count] = i;
+                   count++;
+             }
+
+        }
+        return MyBorrowedCars;
+</div></code></pre>
+<p>在前端中通过按钮触发并且调用它，渲染数据到listOfResult中：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699668738664-1f64aa01-9648-4fc7-81b1-6faad3ba3803.png#averageHue=#f7f6f6&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=527&amp;id=u1cb8cb6d&amp;originHeight=659&amp;originWidth=1775&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=93076&amp;status=done&amp;style=none&amp;taskId=uc1713885-ff3a-413d-aaf8-94cca981be2&amp;title=&amp;width=1420" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699668798625-0204ba0c-6c92-462d-9e15-164f7a3bc7a3.png#averageHue=#1f1f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=345&amp;id=u745ba072&amp;originHeight=431&amp;originWidth=1226&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=53957&amp;status=done&amp;style=none&amp;taskId=u641bcca1-cc08-40cc-9509-73c791d81cd&amp;title=&amp;width=980.8" alt="image.png"></p>
+<h2 id="23%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E8%BF%98%E6%B2%A1%E6%9C%89%E8%A2%AB%E5%80%9F%E7%94%A8%E7%9A%84%E6%B1%BD%E8%BD%A6%E5%88%97%E8%A1%A8">2.3查看当前还没有被借用的汽车列表</h2>
+<p>在合约中实现了getAvailableCars函数：</p>
+<pre class="hljs"><code><div>  function getAvailableCars() external view returns (uint256[] memory) {
+        // Get the list of available car token IDs (not currently borrowed)
+        uint256[] memory availableCars = new uint256[](totalCars - totalRentedCars);
+        uint256 counter = 0;
+        for (uint256 i = 0; i &lt; totalCars; i++) {
+            if (ownerOf(i) != address(0) &amp;&amp; !cars[i].isBorrowed) {
+                availableCars[counter] = i;
+                counter++;
+            }
+        }
+        return availableCars;
+    }
+</div></code></pre>
+<p>在前端中通过按钮触发并且调用它，渲染数据到listOfResult中：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699668970581-f8cba2e8-d772-4427-ac1c-00d1da1e09b2.png#averageHue=#fafafa&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=709&amp;id=u60893094&amp;originHeight=886&amp;originWidth=1761&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=131524&amp;status=done&amp;style=none&amp;taskId=ue4ade648-7c22-4b4b-be86-be12e24a0d1&amp;title=&amp;width=1408.8" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699668945671-6f230d7a-5642-4d72-bb06-2c2c9b7a0f42.png#averageHue=#1f1f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=349&amp;id=u5758abc7&amp;originHeight=436&amp;originWidth=1152&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=53822&amp;status=done&amp;style=none&amp;taskId=uf91de85a-1da2-4b58-81ed-a23e040d06e&amp;title=&amp;width=921.6" alt="image.png"></p>
+<h2 id="24%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E7%9A%84%E6%B1%BD%E8%BD%A6%E5%88%97%E8%A1%A8">2.4显示所有的汽车列表</h2>
+<p>在合约中getAllCars函数：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669352293-a54302b5-b62e-498c-b2a2-f70fffa66656.png#averageHue=#faf9f8&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=665&amp;id=u8fa4dce5&amp;originHeight=831&amp;originWidth=1776&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=142342&amp;status=done&amp;style=none&amp;taskId=u7ae3e554-abf7-4644-aec3-e3c5d5256d4&amp;title=&amp;width=1420.8" alt="image.png"></p>
+<pre class="hljs"><code><div>function getAllCars() external view returns (uint256[] memory) {
+        uint256[] memory allCars = new uint256[](totalCars);
+        for (uint256 i = 0; i &lt; totalCars; i++) {
+            allCars[i] = i;
+        }
+        return allCars;
+    }
+</div></code></pre>
+<p>在前端中通过按钮触发并且调用它，渲染数据到listOfResult中：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669113027-2228b486-645a-4c5f-9ce1-cdf4123c2cd9.png#averageHue=#1f1f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=332&amp;id=u980748ec&amp;originHeight=415&amp;originWidth=1084&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=48056&amp;status=done&amp;style=none&amp;taskId=ud1f874f5-0267-4629-9e7d-e2749ab8f16&amp;title=&amp;width=867.2" alt="image.png"></p>
+<h2 id="25%E6%9F%A5%E8%AF%A2%E4%B8%80%E8%BE%86%E6%B1%BD%E8%BD%A6%E7%9A%84%E4%B8%BB%E4%BA%BA%E4%BB%A5%E5%8F%8A%E8%AF%A5%E6%B1%BD%E8%BD%A6%E5%BD%93%E5%89%8D%E7%9A%84%E5%80%9F%E7%94%A8%E8%80%85">2.5查询一辆汽车的主人，以及该汽车当前的借用者</h2>
+<p>通过输入需要查询的汽车的ID号，在汽车列表中查找并且返回它，最后渲染到listOfResult中：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669331840-8ce72f07-9e01-4282-b6b8-34220d91811c.png#averageHue=#1f1f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=414&amp;id=uedb74bf9&amp;originHeight=517&amp;originWidth=860&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=48446&amp;status=done&amp;style=none&amp;taskId=uadb6a891-fb0a-4cad-8f5b-62c20f9689f&amp;title=&amp;width=688" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669380517-7c44ae50-b8ef-4a0c-a794-3979d4efee23.png#averageHue=#8c8c8c&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=602&amp;id=u133769ed&amp;originHeight=752&amp;originWidth=1714&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=129846&amp;status=done&amp;style=none&amp;taskId=u428b9856-0c19-45b4-a91d-f08c5c51132&amp;title=&amp;width=1371.2" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669396479-1c087fba-e655-4f96-9ff9-d37f7904e23d.png#averageHue=#dbceac&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=375&amp;id=u6304e3bc&amp;originHeight=469&amp;originWidth=1752&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=62114&amp;status=done&amp;style=none&amp;taskId=ucbed61de-c77d-4c85-ae42-777c0c1611e&amp;title=&amp;width=1401.6" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669424291-25f16a20-c150-4069-81c9-d62726f46c40.png#averageHue=#858584&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=717&amp;id=u6183168a&amp;originHeight=896&amp;originWidth=1870&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=172238&amp;status=done&amp;style=none&amp;taskId=u0e3fcd9b-5c34-4a0b-ac10-132a603a015&amp;title=&amp;width=1496" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669436369-d62b0cc7-ca4f-491e-bb92-a1877c1cb591.png#averageHue=#e9d6b4&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=299&amp;id=u936fd67b&amp;originHeight=374&amp;originWidth=1647&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=49867&amp;status=done&amp;style=none&amp;taskId=ub72ffc98-8358-4de2-9820-eb29e1d2c45&amp;title=&amp;width=1317.6" alt="image.png"></p>
+<h2 id="26%E9%80%89%E6%8B%A9%E5%B9%B6%E5%80%9F%E7%94%A8%E6%9F%90%E8%BE%86%E8%BF%98%E6%B2%A1%E6%9C%89%E8%A2%AB%E7%A7%9F%E5%80%9F%E7%9A%84%E6%B1%BD%E8%BD%A6%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B7%B1%E5%8F%91%E8%A1%8C%E7%9A%84erc20%E7%A7%AF%E5%88%86%E6%94%AF%E4%BB%98">2.6选择并借用某辆还没有被租借的汽车一段时间，使用自己发行的ERC20积分支付</h2>
+<p>在合约中实现了borrowCar函数：</p>
+<pre class="hljs"><code><div>function borrowCar(uint256 carTokenId, uint256 duration) external {
+        require(ownerOf(carTokenId) != address(0), &quot;Car does not exist&quot;);
+        require(cars[carTokenId].borrower == address(0), &quot;Car is already borrowed&quot;);
+
+        address borrower = msg.sender;
+        uint256 startTime = block.timestamp;
+        uint256 borrowUntil = startTime + duration;
+        calculateBorrowCost(duration);
+        // Update the car's information
+        cars[carTokenId].borrower = borrower;
+        cars[carTokenId].borrowUntil = borrowUntil;
+        cars[carTokenId].isBorrowed = true;
+        totalRentedCars++;
+        myERC20.transferFrom(msg.sender,address(this) , tokenAmount);
+        myERC20.transfer(cars[carTokenId].owner, myERC20.balanceOf(address(this)));
+        // emit CarBorrowed(carTokenId, borrower, startTime, duration);
+    }
+</div></code></pre>
+<p>在前端中通过按钮触发并调用它：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669593231-e6346a1c-d324-4967-9a65-74b1d84e10da.png#averageHue=#f0f3f8&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=76&amp;id=uba96dd3d&amp;originHeight=95&amp;originWidth=1626&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=13389&amp;status=done&amp;style=none&amp;taskId=u1793ee13-c198-4788-98eb-85a2c8b70f9&amp;title=&amp;width=1300.8" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669651519-300d75c2-e1ed-4826-b13e-9d29865058a1.png#averageHue=#e2deda&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=34&amp;id=ue630ab0f&amp;originHeight=42&amp;originWidth=191&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=2455&amp;status=done&amp;style=none&amp;taskId=u6b8dbc6c-10af-4837-ae50-cb717f93f1b&amp;title=&amp;width=152.8" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669619712-9b5f3fb8-8e0b-4298-a49d-66390bc11303.png#averageHue=#a8a7a7&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=281&amp;id=u1a6509ed&amp;originHeight=351&amp;originWidth=1611&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=66814&amp;status=done&amp;style=none&amp;taskId=uada2c8ae-0a9c-4d00-a258-c0b488571a1&amp;title=&amp;width=1288.8" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669721360-ea184439-a743-4525-92c3-f2fb55c43bd1.png#averageHue=#fdf9f8&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=56&amp;id=u748e98f1&amp;originHeight=70&amp;originWidth=1566&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=17071&amp;status=done&amp;style=none&amp;taskId=ud37a93b0-369b-401f-8e69-2bbb0d1f6dd&amp;title=&amp;width=1252.8" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669766565-bae598ce-71da-4228-8fb0-efee3fa95115.png#averageHue=#e5e2e1&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=41&amp;id=uf810b000&amp;originHeight=51&amp;originWidth=209&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=2677&amp;status=done&amp;style=none&amp;taskId=uaa98dd1b-bef7-4490-b7a2-3b33a0ce744&amp;title=&amp;width=167.2" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669802112-3dc31a13-5c1f-480b-87d8-5c9483ab23b4.png#averageHue=#201f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=245&amp;id=uc0b32950&amp;originHeight=306&amp;originWidth=1110&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=45347&amp;status=done&amp;style=none&amp;taskId=ua32461eb-24a4-4e2f-b2e6-95848b6c429&amp;title=&amp;width=888" alt="image.png"></p>
+<h2 id="27%E5%BD%92%E8%BF%98%E6%B1%BD%E8%BD%A6">2.7归还汽车</h2>
+<p>在合约中实现了returunCar函数：</p>
+<pre class="hljs"><code><div> function returnCar(uint256 carTokenId) external {
+
+            // Update the car's information
+            cars[carTokenId].borrower = address(0);
+            cars[carTokenId].borrowUntil = 0;
+            cars[carTokenId].isBorrowed = false;
+            totalRentedCars--;
+        }
+</div></code></pre>
+<p>在前端中通过按钮触发并调用它：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670790688-4a28896b-12d1-4112-9cdd-9decf86f8399.png?x-oss-process=image/resize,w_937,limit_0#averageHue=#d9af7a&amp;from=url&amp;id=kHVoa&amp;originHeight=401&amp;originWidth=937&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;status=done&amp;style=none&amp;title=" alt="">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699671110097-e433607a-4f24-4ef7-9c81-38e37ff29165.png#averageHue=#f8f7f7&amp;from=url&amp;id=Okw3o&amp;originHeight=282&amp;originWidth=1694&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;status=done&amp;style=none&amp;title=" alt="">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699671762127-6ac3f946-1098-41b8-b1a9-78f70e69fc79.png#averageHue=#201f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=64&amp;id=u9685a90d&amp;originHeight=80&amp;originWidth=859&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=8906&amp;status=done&amp;style=none&amp;taskId=u7ec6e30d-fa5c-4b29-a2bf-2c08d335fe7&amp;title=&amp;width=687.2" alt="image.png"></p>
+<h2 id="28%E5%8F%91%E8%A1%8C%E6%B1%BD%E8%BD%A6">2.8发行汽车</h2>
+<p>在合约中实现createCars函数：</p>
+<pre class="hljs"><code><div>function createCars() external {
+        // Create and distribute NFTs representing cars to test users
+        // For example, give NFTs to certain addresses for testing purposes
+        address[] memory users = new address[](10);
+        users[0] = address(uint160(0x71842261af79D9640cC9f72f1e76eff49d653624));
+        users[1] = address(uint160(0x2e4892Ec35A41695Cf95bf20F2b500a048D605b0));
+        users[2] = address(uint160(0xF957C6bbB01b0611e800335F8b8f80ABeCfe6C13));
+        users[3] = address(uint160(0xB306854d7e77516413DB350E73890a4C2507A170));
+        users[4] = address(uint160(0xbd4850fF5692dF75c8f78B47732AD0EaABEc2fee));
+        users[5] = address(uint160(0x8A6A3e2F007157A1665dFdCD916A4B5fe054C87B));
+        users[6] = address(uint160(0xF891eAe8C49AaC400364d9F2e906de240E51E311));
+        users[7] = address(uint160(0x8798bB05cC335615b8bF56bae3DE3FC907d7fF97));
+        users[8] = address(uint160(0xc64BAc49A643140B11A9C69EeB5E3F14FFDFA303));
+        users[9] = address(uint160(0x70f66b58BdfB582a22cfc301a14c13c65a40DC66));
+        //[address(0x30f270d7dc5a03391b3d9098116d78c419dc185bf7e4b58b4fc14fa0b583d57b), address(0xf13d4b0ab910c8d78bb22629c858ea73ee22d9b0a5e8bd462d48190c49bd14b3)];
+        for (uint256 i = 0; i &lt; 2; i++) {
+            // Mint a car NFT and assign it to the user
+            uint256 tokenId = mintCar(users[i]);
+            // Update the car's owner in the cars mapping
+            cars[tokenId].owner = users[i];
+        }
+        for (uint256 i = 0; i &lt; 5; i++) {
+                    // Mint a car NFT and assign it to the user
+                    uint256 tokenId = mintCar(users[i]);
+                    // Update the car's owner in the cars mapping
+                    cars[tokenId].owner = users[i];
+                }
+        for (uint256 i = 0; i &lt; 7; i++) {
+                    // Mint a car NFT and assign it to the user
+                    uint256 tokenId = mintCar(users[i]);
+                    // Update the car's owner in the cars mapping
+                    cars[tokenId].owner = users[i];
+                }
+         for (uint256 i = 0; i &lt; 10; i++) {
+                             // Mint a car NFT and assign it to the user
+                             uint256 tokenId = mintCar(users[i]);
+                             // Update the car's owner in the cars mapping
+                             cars[tokenId].owner = users[i];
+                         }
+    }
+</div></code></pre>
+<p>在前端中通过按钮触发并调用它：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669890709-08b56231-29fa-4f0d-a4e5-e63f20511318.png#averageHue=#8ec3f9&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=60&amp;id=uec660da0&amp;originHeight=75&amp;originWidth=329&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=2915&amp;status=done&amp;style=none&amp;taskId=u0b1369ca-1675-4af0-b108-09712e9c9f7&amp;title=&amp;width=263.2" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699669941803-0ca3c5b7-1ae6-4a8d-a221-e23d8adadc80.png#averageHue=#201f1f&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=58&amp;id=u45120633&amp;originHeight=72&amp;originWidth=864&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=8456&amp;status=done&amp;style=none&amp;taskId=ua31ac0a6-4a1d-4724-b4ae-d5d072fbcc5&amp;title=&amp;width=691.2" alt="image.png"></p>
+<h1 id="3%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE">3.项目运行截图</h1>
+<p>按照以下流程操作：编译部署合约，启动前端，连接钱包，发行汽车，显示所有汽车，显示自己拥有的汽车，获得空投积分，借用一些汽车，显示已借用的汽车，显示未借用的汽车，归还汽车，显示已经借用的汽车，查询一辆汽车
+下面是按照此流程运行的截图：
+编译部署合约：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670302110-a4957cf3-d172-45d8-bbb9-464311ab2086.png#averageHue=#32302e&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=67&amp;id=u441c102e&amp;originHeight=84&amp;originWidth=1387&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=28277&amp;status=done&amp;style=none&amp;taskId=u67ce9604-b03a-46b3-8011-75f48c6b514&amp;title=&amp;width=1109.6" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670356085-94a0fb7d-be69-443b-ac35-6e9542acfcac.png#averageHue=#232120&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=144&amp;id=uca326a4d&amp;originHeight=180&amp;originWidth=766&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=12174&amp;status=done&amp;style=none&amp;taskId=u40dcd988-462d-41a4-bbf3-28d3cb4fb4b&amp;title=&amp;width=612.8" alt="image.png">
+启动前端：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670366449-2e934d07-5848-4daa-ad51-6ab077c6d8b1.png#averageHue=#181818&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=175&amp;id=u928ae4b2&amp;originHeight=219&amp;originWidth=972&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=13506&amp;status=done&amp;style=none&amp;taskId=u815a8892-1acc-45f6-a651-962a9f50b80&amp;title=&amp;width=777.6" alt="image.png">
+连接钱包：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670383825-a0310acc-7a74-4f2e-b307-d8353af96540.png#averageHue=#fafafa&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=630&amp;id=u35f4f4f4&amp;originHeight=787&amp;originWidth=1800&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=61634&amp;status=done&amp;style=none&amp;taskId=uac3b1aaa-379e-4165-bd7f-9af71f196c3&amp;title=&amp;width=1440" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670397412-b5c406da-c028-49b6-ac0d-4ae434154e0e.png#averageHue=#f5f5f5&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=292&amp;id=ua7feb09a&amp;originHeight=365&amp;originWidth=1800&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=53402&amp;status=done&amp;style=none&amp;taskId=ua8109a9f-ed1f-4757-8990-2bbc5c99932&amp;title=&amp;width=1440" alt="image.png">
+发行汽车：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670415172-590e595c-dee9-49e0-a176-b67d7fbb734e.png#averageHue=#d7a769&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=623&amp;id=u076196b2&amp;originHeight=779&amp;originWidth=1862&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=125953&amp;status=done&amp;style=none&amp;taskId=u23775f51-dcd8-49b0-9ff2-c48c5392a70&amp;title=&amp;width=1489.6" alt="image.png">
+显示所有汽车：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670463627-9c516882-9cfa-43f8-9c34-fdf94fc7d4f2.png#averageHue=#fafaf9&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=706&amp;id=uf516bf96&amp;originHeight=882&amp;originWidth=1776&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=135097&amp;status=done&amp;style=none&amp;taskId=u415b7e46-27fd-48ca-bfb0-2bee5ebcae4&amp;title=&amp;width=1420.8" alt="image.png">
+显示自己拥有的汽车：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670486502-fd48bc72-54b8-4133-94a0-436eb961bb9c.png#averageHue=#f9f8f8&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=490&amp;id=u2eaa774e&amp;originHeight=612&amp;originWidth=1756&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=92467&amp;status=done&amp;style=none&amp;taskId=u8473b649-83e9-436e-8f24-f838f6db109&amp;title=&amp;width=1404.8" alt="image.png">
+获得空投积分：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670553838-205db401-01e8-4d0d-a9f3-5f21ca4312bd.png#averageHue=#e0d9b6&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=553&amp;id=u85bac98b&amp;originHeight=691&amp;originWidth=1834&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=141327&amp;status=done&amp;style=none&amp;taskId=u94ea98dc-e686-4349-b5ac-ee555e6801f&amp;title=&amp;width=1467.2" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670564151-d4b6a1e3-003e-4ac2-9ecd-58a5d3dd4afc.png#averageHue=#bbbbba&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=157&amp;id=u962120f4&amp;originHeight=196&amp;originWidth=1816&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=32824&amp;status=done&amp;style=none&amp;taskId=u9b74e78b-bb64-44de-8d1e-15ea36969a2&amp;title=&amp;width=1452.8" alt="image.png">
+借用一些汽车（一共借了两辆，因为操作一样，只放了借用其中一辆时的截图）：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670596651-6afa1065-6c20-4c2f-b4d9-0e54baa2d831.png#averageHue=#929191&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=511&amp;id=ua505ec80&amp;originHeight=639&amp;originWidth=1812&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=112272&amp;status=done&amp;style=none&amp;taskId=u9649c9f1-8319-4249-bdff-3d945d779bc&amp;title=&amp;width=1449.6" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670639298-f69e1088-5836-4338-af1f-ca9e903e62db.png#averageHue=#dfd8b8&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=634&amp;id=u64a7f5c1&amp;originHeight=792&amp;originWidth=1856&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=165569&amp;status=done&amp;style=none&amp;taskId=uddb9a6e1-707c-43d6-a6a4-c9ea04a3fb1&amp;title=&amp;width=1484.8" alt="image.png">
+显示我已借用汽车列表：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670725608-6eea6e06-aa7d-4fcd-bdfd-7d8e636ec812.png#averageHue=#f6f4f4&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=366&amp;id=u2078d612&amp;originHeight=457&amp;originWidth=1774&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=82937&amp;status=done&amp;style=none&amp;taskId=ub7a9c6c6-16b9-4286-b58c-1bdb06c9275&amp;title=&amp;width=1419.2" alt="image.png">
+显示所有未借用汽车
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670772020-d49b7b5f-9c07-4793-bbcc-6e2fdaa34e70.png#averageHue=#fafafa&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=652&amp;id=u4a68829a&amp;originHeight=815&amp;originWidth=1729&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=124954&amp;status=done&amp;style=none&amp;taskId=ued9548fe-a39c-4f87-ad0f-a1242b3ee01&amp;title=&amp;width=1383.2" alt="image.png">
+归还汽车：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670790688-4a28896b-12d1-4112-9cdd-9decf86f8399.png#averageHue=#d9af7a&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=648&amp;id=u582bdc13&amp;originHeight=810&amp;originWidth=1895&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=169219&amp;status=done&amp;style=none&amp;taskId=u8d683f53-fd16-414d-a0ef-a2c28dad431&amp;title=&amp;width=1516" alt="image.png">
+显示我已借用汽车列表：
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699671110097-e433607a-4f24-4ef7-9c81-38e37ff29165.png#averageHue=#f8f7f7&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=226&amp;id=ue545ef62&amp;originHeight=282&amp;originWidth=1694&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=47371&amp;status=done&amp;style=none&amp;taskId=u7c9ca70e-8155-4fec-b3ea-ad0c4ca0a03&amp;title=&amp;width=1355.2" alt="image.png">
+查询一辆汽车：<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670870045-8c586aa6-f166-4282-aee9-afce29236a37.png#averageHue=#8f8f8e&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=480&amp;id=u4d482307&amp;originHeight=600&amp;originWidth=1790&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=77528&amp;status=done&amp;style=none&amp;taskId=u164b4238-dd7a-49c0-a875-3d9431bcf25&amp;title=&amp;width=1432" alt="image.png">
+<img src="https://cdn.nlark.com/yuque/0/2023/png/35447189/1699670879596-24d67514-2ec7-4433-9757-803ef5e3037f.png#averageHue=#f7f6f6&amp;clientId=ud69c2427-6143-4&amp;from=paste&amp;height=417&amp;id=ud875270d&amp;originHeight=521&amp;originWidth=1796&amp;originalType=binary&amp;ratio=1.25&amp;rotation=0&amp;showTitle=false&amp;size=67833&amp;status=done&amp;style=none&amp;taskId=u5b3197ac-5cbd-4078-897e-ab5f2eefe30&amp;title=&amp;width=1436.8" alt="image.png"></p>
+
+</body>
+</html>
